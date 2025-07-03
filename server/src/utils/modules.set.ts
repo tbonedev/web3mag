@@ -19,9 +19,6 @@ function generateModulesSet() {
     ConfigModule.forRoot({
       isGlobal: true,
       load: [appConfig, databaseConfig, redisConfig, authConfig, mailConfig],
-      // Мы убираем envFilePath. По умолчанию, @nestjs/config
-      // будет искать файл .env в корневой директории проекта.
-      // Это самый надежный способ.
     }),
   ];
 
