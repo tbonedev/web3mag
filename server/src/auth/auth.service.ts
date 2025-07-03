@@ -27,7 +27,7 @@ import { plainToInstance } from 'class-transformer';
 import { RegisterReqDto } from './dto/register.req.dto';
 import { RegisterResDto } from './dto/register.res.dto';
 import { ValidationException } from 'src/common/exceptions/validation.exception';
-import { ErrorCode } from 'src/constants/error-code.constant';
+import { ErrorCode } from 'src/constants/error.code.constant';
 import { createCacheKey } from 'src/utils/cache.util';
 import { CacheKey } from 'src/constants/cache.constant';
 import { JwtPayloadType } from './types/jwt-payload.type';
