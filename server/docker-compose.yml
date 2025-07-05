@@ -10,5 +10,28 @@ services:
       POSTGRES_DB: web3mag
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      - web3mag
+
+  redis:
+    image: redis/redis-stack:latest
+    restart: always
+    ports:
+      - '6379:6379'
+      - '8001:8001'
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', '--raw', 'incr', 'ping']
+    environment:
+      REDIS_ARGS: '--requirepass redispass'
+    networks:
+      - web3mag
+
 volumes:
   db_data:
+  redis_data:
+
+networks:
+  web3mag:
+    driver: bridge
