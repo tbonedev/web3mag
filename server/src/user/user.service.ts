@@ -2,7 +2,7 @@ import { Uuid } from 'src/common/types/common.type';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SYSTEM_USER_ID } from 'src/constants/app.constant';
-import { ErrorCode } from 'src/constants/error-code.constant';
+import { ErrorCode } from 'src/constants/error.code.constant';
 import { UserEntity } from './entities/user.entity';
 import { UserResDto } from './dto/user.res.dto';
 import { CreateUserReqDto } from './dto/create-user.req.dto';
