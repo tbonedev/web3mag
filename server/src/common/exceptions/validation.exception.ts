@@ -1,4 +1,4 @@
-import { ErrorCode } from 'src/constants/error-code.constant';
+import { ErrorCode } from 'src/constants/error.code.constant';
 import { BadRequestException } from '@nestjs/common';
 
 export class ValidationException extends BadRequestException {

@@ -1,5 +1,5 @@
 import { registerDecorator, type ValidationOptions } from 'class-validator';
-import ms from 'ms';
+import * as ms from 'ms'; // ИСПРАВЛЕНИЕ: Используем синтаксис "import * as"
 
 export function IsMs(validationOptions?: ValidationOptions): PropertyDecorator {
   return (object: object, propertyName: string) => {
@@ -11,15 +11,12 @@ export function IsMs(validationOptions?: ValidationOptions): PropertyDecorator {
       options: validationOptions,
       validator: {
         validate(value: any) {
-          try {
-            return (
-              typeof value === 'string' &&
-              value.length > 0 &&
-              typeof ms(value as ms.StringValue) === 'number'
-            );
-          } catch {
+          if (typeof value !== 'string' || value.length === 0) {
             return false;
           }
+
+          const result = ms(value as any);
+          return result !== undefined;
         },
         defaultMessage() {
           return `$property must be a valid time duration (e.g. "1d", "2h", "3m")`;
